@@ -1,14 +1,34 @@
 #include <windows.h>
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+enum { id_button1 = 1, id_button2 };
+
+void OnCreate(HWND hw) {
+	// TODO: create two child windows of type button
+}
+
+void OnCommand(HWND hw, int id) {
+	// TODO: show message box with text depending on which button was pressed
+}
+
+void OnDestroy() {
+	PostQuitMessage(0);
+}
+
+LRESULT CALLBACK WndProc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
 {
-	switch (message)
+	switch (msg)
 	{
+		case WM_CREATE:
+			OnCreate(hw);
+			return 0;
+		case WM_COMMAND:
+			OnCommand(hw, LOWORD(wp));
+			return 0;
 		case WM_DESTROY:
-			PostQuitMessage(0);
+			OnDestroy();
 			return 0;
 	}
-	return DefWindowProc(hwnd, message, wParam, lParam);
+	return DefWindowProc(hw, msg, wp, lp);
 }
 
 
@@ -23,7 +43,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH);
+	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
@@ -46,4 +66,3 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 
 	return msg.wParam;
 }
-
