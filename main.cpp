@@ -43,7 +43,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground =(HBRUSH) CreateSolidBrush(0x00FFFF);
 
 	return RegisterClass(&wc);
 }
