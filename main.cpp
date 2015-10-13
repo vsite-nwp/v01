@@ -59,7 +59,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground =(HBRUSH) CreateSolidBrush(0xFFFF00);
+	wc.hbrBackground = CreateSolidBrush(RGB(0,255,255));
 
 	return RegisterClass(&wc);
 }
