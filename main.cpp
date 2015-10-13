@@ -2,13 +2,28 @@
 
 enum { id_button1 = 1, id_button2 };
 
+
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
-	//HWND hw1 = CreateWindow("button", "one", WS_CHILD | WS_VISIBLE, 40, 40, 50, 20, hw, 0, 0, 0);
+	
+	 CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 100, 40, 50, 20, hw, (HMENU)id_button1, 0, 0);
+	
+	 CreateWindow("Button", "two", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 100, 70, 50, 20, hw, (HMENU)id_button2, 0, 0);
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	
+	switch (id)
+	{
+		case id_button1:
+			MessageBox(hw, "one", "NWP", MB_OK | WS_VISIBLE | MB_ICONEXCLAMATION | WS_CHILD);
+			break;
+		case id_button2:
+			MessageBox(hw, "two", "NWP", MB_OK | WS_VISIBLE | MB_ICONEXCLAMATION | WS_CHILD);
+			break;
+	}
+	
+	
+	
 }
 
 void OnDestroy() {
@@ -58,7 +73,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 		return 0;
 
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+		CW_USEDEFAULT, CW_USEDEFAULT, 300, 200,
 		NULL, NULL, hInstance, NULL); 
 
 	MSG msg;
