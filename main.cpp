@@ -4,6 +4,7 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
+	//HWND hw1 = CreateWindow("button", "one", WS_CHILD | WS_VISIBLE, 40, 40, 50, 20, hw, 0, 0, 0);
 }
 
 void OnCommand(HWND hw, int id) {
@@ -43,7 +44,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground =(HBRUSH) CreateSolidBrush(0x00FFFF);
+	wc.hbrBackground =(HBRUSH) CreateSolidBrush(0xFFFF00);
 
 	return RegisterClass(&wc);
 }
