@@ -10,6 +10,14 @@ void OnCreate(HWND hw) {
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
+	switch (id) {
+	case id_button1:
+		MessageBox(hw, "ONE", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+	case id_button2:
+		MessageBox(hw, "TWO", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+	}
 }
 
 void OnDestroy() {
