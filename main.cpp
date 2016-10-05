@@ -8,10 +8,7 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-	if (id == id_button1)
-		MessageBox(hw, "one", "button", MB_ICONWARNING | MB_DEFBUTTON1);
-	else if (id == id_button2)
-		MessageBox(hw, "two", "button", MB_ICONWARNING | MB_DEFBUTTON1);
+		MessageBox(hw, (id == id_button1 ? "one" : "two"), "button", MB_ICONWARNING | MB_OK);
 }
 
 void OnDestroy() {
@@ -47,7 +44,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) CreateSolidBrush(RGB(0, 255, 255)); // TODO: replace with cyan background
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
