@@ -4,6 +4,8 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
+	CreateWindow("BUTTON", "first", WS_CHILD | WS_VISIBLE, 100, 100, 100, 50, hw, NULL, 0, 0);
+	CreateWindow("BUTTON", "second", WS_CHILD | WS_VISIBLE, 100, 200, 100, 50, hw, NULL, 0, 0);
 }
 
 void OnCommand(HWND hw, int id) {
