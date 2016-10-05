@@ -8,7 +8,8 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-		MessageBox(hw, (id == id_button1 ? "one" : "two"), "button", MB_ICONWARNING | MB_OK);
+	MessageBox(hw, std::to_string(id).c_str(), "button", MB_ICONWARNING | MB_OK);
+	//MessageBox(hw, (id == id_button1 ? "one" : "two"), "button", MB_ICONWARNING | MB_OK);
 }
 
 void OnDestroy() {
