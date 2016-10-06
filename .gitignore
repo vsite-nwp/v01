@@ -1,2 +1,5 @@
 Debug/
 Release/
+/v01.VC.db
+/v01.VC.VC.opendb
+*.suo
