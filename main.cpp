@@ -11,7 +11,7 @@ void OnCommand(HWND hw, int id) {
 	if (id == id_button1)
 		MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING);
 	else
-		MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING);
+		MessageBox(hw, "two", "NWP", MB_OK | MB_ICONWARNING);
 }
 
 void OnDestroy() {
