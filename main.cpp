@@ -3,10 +3,16 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
+	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 50, 30, 100, 50, hw, (HMENU)id_button1, 0, 0);
+	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 50, 100, 100, 50, hw, (HMENU)id_button2, 0, 0);
 	// TODO: create two child windows of type button
 }
 
 void OnCommand(HWND hw, int id) {
+	if (id == 1)
+		MessageBox(hw, "Poruka 1", "NWP", MB_OK | MB_ICONWARNING);
+	else
+		MessageBox(hw, "Poruka 2", "NWP",MB_OK | MB_ICONWARNING);
 	// TODO: show message box with text depending on which button was pressed.
 }
 
@@ -43,7 +49,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = (HBRUSH) CreateSolidBrush(RGB(0,255,255)); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
