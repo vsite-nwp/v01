@@ -13,10 +13,10 @@ void OnCommand(HWND hw, int id) {
 
 	switch (id) {
 	case id_button1:
-		MessageBox(hw, "Button 1", "NWP", MB_OK);
+		MessageBox(hw, "Button 1", "NWP", MB_OK|MB_ICONWARNING);
 		return;
 	case id_button2:
-		MessageBox(hw, "Button 2", "NWP", MB_OK);
+		MessageBox(hw, "Button 2", "NWP", MB_OK|MB_ICONWARNING);
 		return;
 	}
 
