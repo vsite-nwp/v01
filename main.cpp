@@ -4,10 +4,20 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
+	CreateWindow("BUTTON", "prvi", WS_CHILD | WS_VISIBLE, 100, 100, 150, 30,hw,(HMENU)100,NULL,NULL);
+	CreateWindow("BUTTON", "drugi", WS_CHILD | WS_VISIBLE, 100, 200, 150, 30,hw, (HMENU)101, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
+	switch (id) {
+	case 100:
+		MessageBox(hw, "one", "caption", MB_ICONWARNING);
+		return ;
+	case 101:
+		MessageBox(hw, "two", "caption", MB_ICONWARNING);
+		return ;
+	}
 }
 
 void OnDestroy() {
@@ -43,7 +53,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255)); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
@@ -52,6 +62,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 {
 	char clsName[] = "NWPClass";
+	
 
 	if(!RegisterMyClass(hInstance, clsName))
 		return 0;
