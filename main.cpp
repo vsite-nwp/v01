@@ -1,11 +1,11 @@
 #include <windows.h>
 
-enum { id_button1 = 100, id_button2=101 };
+enum { id_button1 = 100, id_button2 = 101 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
 	CreateWindow("BUTTON", "ONE", WS_CHILD | WS_VISIBLE, 100, 100, 100, 50, hw, (HMENU) id_button1, NULL, NULL);
-	CreateWindow("BUTTON", "TWO", WS_CHILD | WS_VISIBLE, 100, 200, 100, 50, hw, (HMENU)id_button2, NULL, NULL);
+	CreateWindow("BUTTON", "TWO", WS_CHILD | WS_VISIBLE, 100, 200, 100, 50, hw, (HMENU) id_button2, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
