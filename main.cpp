@@ -10,7 +10,11 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+
+	if(id == 1)
+		MessageBox(hw,"one","NWP",MB_OK| MB_ICONWARNING);
+	if (id == 2)
+		MessageBox(hw, "two", "NWP", MB_OK| MB_ICONWARNING);
 }
 
 void OnDestroy() {
@@ -46,7 +50,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground =CreateSolidBrush(RGB(0,255,255)); 
+	wc.hbrBackground = CreateSolidBrush(RGB(0,255,255)); 
 
 	return RegisterClass(&wc);
 }
