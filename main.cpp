@@ -1,22 +1,22 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
+enum { id_button1 = 100, id_button2=101 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
-	CreateWindow("BUTTON", "JEDAN", WS_CHILD | WS_VISIBLE, 100, 100, 100, 50, hw, (HMENU)100, NULL, NULL);
-	CreateWindow("BUTTON", "DVA", WS_CHILD | WS_VISIBLE, 100, 200, 100, 50, hw, (HMENU)101, NULL, NULL);
+	CreateWindow("BUTTON", "ONE", WS_CHILD | WS_VISIBLE, 100, 100, 100, 50, hw, (HMENU)100, NULL, NULL);
+	CreateWindow("BUTTON", "TWO", WS_CHILD | WS_VISIBLE, 100, 200, 100, 50, hw, (HMENU)101, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
 	switch (id)
 	{
-	case 100:
-		MessageBox(hw, "Sto god1",  "Case1", MB_ICONWARNING);
+	case id_button1:
+		MessageBox(hw, "Whatever1",  "Caption1", MB_ICONWARNING);
 		break;
-	case 101:
-		MessageBox(hw, "Sto god2", "Caption2", MB_ICONWARNING);
+	case id_button2:
+		MessageBox(hw, "Whatever2", "Caption2", MB_ICONWARNING);
 		break;
 	}
 	
@@ -55,7 +55,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)  CreateSolidBrush(RGB(0,255,255)); // TODO: replace with cyan background
+	wc.hbrBackground = CreateSolidBrush(RGB(0,255,255)); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
