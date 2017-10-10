@@ -9,11 +9,9 @@ void OnCreate(HWND hw) {
 	CreateWindow("Button", "Click me", WS_CHILD | WS_VISIBLE, 100, 150, 150, 30, hw, (HMENU)id_button2, 0, 0);
 }
 void OnCommand(HWND hw, int id) {
-
-	if (id == id_button1)
-		MessageBox(hw, "one", "NWP", MB_OK);
-	if (id == id_button2)
-		MessageBox(hw, "two", "NWP", MB_OK);
+	char*numb;
+	(id == id_button1 ? numb = "one" : numb = "two");
+	MessageBox(hw, numb, "NWP", MB_OK|MB_ICONWARNING);
 }
 
 void OnDestroy() {
@@ -49,8 +47,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255)); // TODO: replace with cyan background
-
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 	return RegisterClass(&wc);
 }
 
