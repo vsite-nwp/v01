@@ -10,11 +10,12 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-
-	if(id == 1)
-		MessageBox(hw,"one","NWP",MB_OK| MB_ICONWARNING);
-	if (id == 2)
-		MessageBox(hw, "two", "NWP", MB_OK| MB_ICONWARNING);
+	LPCSTR s;
+	if (id == id_button1)
+		s = "one";
+	else
+		s = "two";
+	MessageBox(hw, s, "NWP", MB_OK| MB_ICONWARNING);
 }
 
 void OnDestroy() {
