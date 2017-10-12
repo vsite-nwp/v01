@@ -3,15 +3,22 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	
+	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 100, 30, hw, (HMENU)id_button1, 0, 0);
+	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 200, 100, 30, hw, (HMENU)id_button2, 0, 0);
 }
 
 void OnCommand(HWND hw, int id) {
-	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 100, 30, hw, (HMENU)id_button1, 0, 0);
-	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 200, 100, 30, hw, (HMENU)id_button2, 0, 0);
-
+	LPCTSTR a;
+	switch(id){
+	case id_button1 :
+		a = "one";
+		break;
+	case id_button2 :
+		 a = "two";
+		break;
+	}
+	MessageBox(hw, a, "NWP", MB_OK | MB_ICONWARNING);
 }
-
 
 void OnDestroy() {
 	PostQuitMessage(0);
@@ -46,7 +53,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
