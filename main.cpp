@@ -1,5 +1,4 @@
 #include <windows.h>
-#include <string>
 
 enum { id_button1 = 1, id_button2 };
 
