@@ -1,23 +1,31 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
+enum { id_button1 = 100, id_button2 = 101 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
-	CreateWindow("BUTTON", "prvi", WS_CHILD | WS_VISIBLE, 100, 100, 150, 30,hw,(HMENU)100,NULL,NULL);
-	CreateWindow("BUTTON", "drugi", WS_CHILD | WS_VISIBLE, 100, 200, 150, 30,hw, (HMENU)101, NULL, NULL);
+
+	CreateWindow("BUTTON", "ONE", WS_CHILD | WS_VISIBLE, 100, 100, 100, 30,
+		hw, (HMENU)id_button1, NULL, NULL);
+	CreateWindow("BUTTON", "TWO", WS_CHILD | WS_VISIBLE, 300, 100, 100, 30,
+		hw, (HMENU)id_button2, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
-	switch (id) {
-	case 100:
-		MessageBox(hw, "one", "caption", MB_ICONWARNING);
-		return ;
-	case 101:
-		MessageBox(hw, "two", "caption", MB_ICONWARNING);
-		return ;
+
+	char *nameStr;
+
+	switch (id)
+	{
+	case id_button1:
+		nameStr = "Alert1";
+		break;
+	case id_button2:
+		nameStr = "Alert2";
+		break;
 	}
+
+	MessageBox(hw, nameStr, "Caption", MB_ICONWARNING);
+
 }
 
 void OnDestroy() {
@@ -28,15 +36,15 @@ LRESULT CALLBACK WndProc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
 	{
-		case WM_CREATE:
-			OnCreate(hw);
-			return 0;
-		case WM_COMMAND:
-			OnCommand(hw, LOWORD(wp));
-			return 0;
-		case WM_DESTROY:
-			OnDestroy();
-			return 0;
+	case WM_CREATE:
+		OnCreate(hw);
+		return 0;
+	case WM_COMMAND:
+		OnCommand(hw, LOWORD(wp));
+		return 0;
+	case WM_DESTROY:
+		OnDestroy();
+		return 0;
 	}
 	return DefWindowProc(hw, msg, wp, lp);
 }
@@ -53,26 +61,27 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255)); // TODO: replace with cyan background
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255)); 
 
-	return RegisterClass(&wc);
+		return RegisterClass(&wc);
 }
 
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int
+	nShow)
 {
 	char clsName[] = "NWPClass";
-	
 
-	if(!RegisterMyClass(hInstance, clsName))
+	if (!RegisterMyClass(hInstance, clsName))
 		return 0;
 
-	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
+	HWND hwnd = CreateWindow(clsName, "NWP 1", WS_OVERLAPPEDWINDOW |
+		WS_VISIBLE,
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-		NULL, NULL, hInstance, NULL); 
+		NULL, NULL, hInstance, NULL);
 
 	MSG msg;
-	while(GetMessage(&msg, NULL, 0, 0))
+	while (GetMessage(&msg, NULL, 0, 0))
 		DispatchMessage(&msg);
 
 	return msg.wParam;
