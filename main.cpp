@@ -8,6 +8,7 @@ void OnCreate(HWND hw) {
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
+	//jnbjn
 }
 
 void OnDestroy() {
