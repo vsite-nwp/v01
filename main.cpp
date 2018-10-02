@@ -1,4 +1,6 @@
 #include <windows.h>
+typedef DWORD COLORREF;
+typedef DWORD* LPCOLORREF;
 
 enum { id_button1 = 1, id_button2 };
 
@@ -44,7 +46,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255)); 
 
 	return RegisterClass(&wc);
 }
