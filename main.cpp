@@ -3,11 +3,19 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+	//create two child windows of type button
+	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE,
+		10, 10, 60, 35,
+		hw, (HMENU)id_button1, NULL, NULL);
+	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE,
+		10, 50, 60, 35,
+		hw, (HMENU)id_button2, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	//show unique message box for buttons
+	if (id == 1) MessageBox(hw, "one", "NWP", MB_ICONWARNING | MB_OK);
+	else if (id == 2) MessageBox(hw, "two", "NWP", MB_ICONWARNING | MB_OK);
 }
 
 void OnDestroy() {
@@ -43,7 +51,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = CreateSolidBrush(RGB(0,255,255)); //window background colour set to cyan
 
 	return RegisterClass(&wc);
 }
@@ -57,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 		return 0;
 
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+		CW_USEDEFAULT, CW_USEDEFAULT, 200, 200,
 		NULL, NULL, hInstance, NULL); 
 
 	MSG msg;
