@@ -4,20 +4,20 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 	HWND btn_one = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE,
-		50, 50, 100, 50, hw, (HMENU)id_button1, (HINSTANCE)GetWindowLong(hw, GWL_HINSTANCE), NULL);
+		50, 50, 100, 50, hw, (HMENU)id_button1, 0, NULL);
 
 	HWND btn_two = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE,
-		50, 125, 100, 50, hw, (HMENU)id_button2, (HINSTANCE)GetWindowLong(hw, GWL_HINSTANCE), NULL);
+		50, 125, 100, 50, hw, (HMENU)id_button2, 0, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
 	switch (id)
 	{
 		case id_button1:
-			MessageBox(NULL, "one", "NWP", MB_OK);
+			MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING);
 			break;
 		case id_button2:
-			MessageBox(NULL, "two", "NWP", MB_OK);
+			MessageBox(hw, "two", "NWP", MB_OK | MB_ICONWARNING);
 			break;
 	}
 }
