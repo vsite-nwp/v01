@@ -12,7 +12,7 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 	LPCSTR message = "";
 
-	id == id_button1 ? message = "one" : message = "two";
+	id == id_button1 ? message="one" : message = "two";
 	MessageBox(hw, message, "Error", MB_ICONWARNING);
 }
 
