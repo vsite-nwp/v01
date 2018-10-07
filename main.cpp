@@ -3,7 +3,11 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+
+
+
+
+
 }
 
 void OnCommand(HWND hw, int id) {
