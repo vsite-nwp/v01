@@ -8,6 +8,7 @@ void OnCreate(HWND hw) {
 	HWND button2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE,
 		50, 150, 100, 40,
 		hw, (HMENU)id_button2, NULL, NULL);
+
 	
 	
 }
