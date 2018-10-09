@@ -1,7 +1,4 @@
 #include <windows.h>
-typedef DWORD COLORREF;
-typedef DWORD* LPCOLORREF;
-
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
@@ -12,17 +9,17 @@ void OnCreate(HWND hw) {
 		50, 150, 100, 40,
 		hw, (HMENU) 2, NULL, NULL);
 	
-	// TODO: create two child windows of type button
+	
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	
 	switch (id) {
 		case 1:
-			MessageBox(NULL, "one", "NWP", MB_OK| MB_ICONWARNING);
+			MessageBox(hw, "one", "NWP", MB_OK| MB_ICONWARNING);
 			break;
 		case 2:
-			MessageBox(NULL, "two", "NWP", MB_OK| MB_ICONWARNING);
+			MessageBox(hw, "two", "NWP", MB_OK| MB_ICONWARNING);
 			break;
 		default:
 			return;
@@ -63,7 +60,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255)); 
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255)); 
 
 	return RegisterClass(&wc);
 }
