@@ -5,6 +5,13 @@ typedef DWORD* LPCOLORREF;
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
+	HWND button1 = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE,
+		50, 50, 100,40,
+		hw, NULL, NULL, NULL);
+	HWND button2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE,
+		50, 150, 100,40,
+		hw, NULL, NULL, NULL);
+	
 	// TODO: create two child windows of type button
 }
 
@@ -62,7 +69,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL); 
-
+	
 	MSG msg;
 	while(GetMessage(&msg, NULL, 0, 0))
 		DispatchMessage(&msg);
