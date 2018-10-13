@@ -3,17 +3,14 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
-	char s[128];
-	LoadString(0, id_button1, s, sizeof s);
+	
 	CreateWindow("BUTTON", "Button 1", WS_CHILD | WS_VISIBLE, 100, 50, 110, 40, hw, (HMENU)id_button1, 0, 0);
-	LoadString(0, id_button2, s, sizeof s);
 	CreateWindow("BUTTON", "Button 2", WS_CHILD | WS_VISIBLE, 100, 100, 110, 40, hw, (HMENU)id_button2, 0, 0);
 
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	
 	switch (id) {
 	case id_button1:
 	{
@@ -65,8 +62,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	//wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
-	wc.hbrBackground=(HBRUSH)CreateSolidBrush(RGB(0,255,255));
+	wc.hbrBackground=CreateSolidBrush(RGB(0,255,255));
 	return RegisterClass(&wc);
 }
 
