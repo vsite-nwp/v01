@@ -18,7 +18,11 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	char boxName1[] = "one";
+	char boxName2[] = "two";
+	LPCSTR box;
+	id == id_button1 ? box = boxName1 : box = boxName2;
+	MessageBox(hw, box, LPCSTR("NWP"), MB_ICONWARNING | MB_OK);
 }
 
 void OnDestroy() {
