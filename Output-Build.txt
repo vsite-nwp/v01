@@ -1,0 +1,5 @@
+﻿1>------ Build started: Project: v01, Configuration: Debug Win32 ------
+1>  main.cpp
+1>  v01.vcxproj -> C:\Users\Korisnik\source\repos\v01\.\Debug\v01.exe
+1>  v01.vcxproj -> .\Debug/v01.pdb (Full PDB)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

@@ -3,7 +3,18 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+	HWND hwnd1, hwnd2;
+	hwnd1 = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE | WS_BORDER,
+		450, 200, 100, 30,
+		hw, (HMENU)1, NULL, NULL);
+	hwnd2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE | WS_BORDER,
+		450, 240, 100, 30,
+		hw, (HMENU)2, NULL, NULL);
+
+	ShowWindow(hwnd1, SW_SHOW);
+	UpdateWindow(hw);
+	ShowWindow(hwnd2, SW_SHOW);
+	UpdateWindow(hw);
 }
 
 void OnCommand(HWND hw, int id) {
