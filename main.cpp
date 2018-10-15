@@ -2,6 +2,7 @@
 
 enum { id_button1 = 1, id_button2 };
 
+
 void OnCreate(HWND hw) {
 	HWND hwnd_1 = CreateWindow("BUTTON",
 		"First", WS_CHILD | WS_VISIBLE,
