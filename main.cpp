@@ -12,20 +12,15 @@ void OnCreate(HWND hw) {
 		"Second", WS_CHILD | WS_VISIBLE,
 		400, 300, 100, 50,
 		hw, (HMENU)2, NULL, NULL);
-
-	ShowWindow(hwnd_1,SW_SHOW);
-	UpdateWindow(hwnd_1);
-	ShowWindow(hwnd_2,SW_SHOW);
-	UpdateWindow(hwnd_2);
 }
 
 void OnCommand(HWND hw, int id) {
 	switch (id) {
 	case id_button1:
-		id = MessageBox(hw, "neka poruka za prvi", "neki naslov za prvi", MB_OK);
+		id = MessageBoxA(hw, "neka poruka za prvi", "neki naslov za prvi", MB_ICONEXCLAMATION);
 		break;
 	case id_button2:
-		id = MessageBox(hw, "neka poruka za drugi", "neki naslov za drugi", MB_OK);
+		id = MessageBoxA(hw, "neka poruka za drugi", "neki naslov za drugi", MB_ICONEXCLAMATION);
 		break;
 	}
 }
