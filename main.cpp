@@ -18,10 +18,10 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 	switch (id) {
 	case id_button1:
-		id = MessageBoxA(hw, "neka poruka za prvi", "neki naslov za prvi", MB_ICONEXCLAMATION);
+		id = MessageBox(hw, "neka poruka za prvi", "neki naslov za prvi", MB_ICONEXCLAMATION);
 		break;
 	case id_button2:
-		id = MessageBoxA(hw, "neka poruka za drugi", "neki naslov za drugi", MB_ICONEXCLAMATION);
+		id = MessageBox(hw, "neka poruka za drugi", "neki naslov za drugi", MB_ICONEXCLAMATION);
 		break;
 	}
 }
