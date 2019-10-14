@@ -3,6 +3,8 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
+	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 50, 20, hw, (HMENU)id_button1, 0, 0);
+	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 130, 50, 20, hw, (HMENU)id_button2, 0, 0);
 	// TODO: create two child windows of type button
 }
 
@@ -43,7 +45,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = CreateSolidBrush(COLORREF RGB(0, 255, 255)); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
@@ -56,7 +58,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 	if(!RegisterMyClass(hInstance, clsName))
 		return 0;
 
-	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
+		CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL); 
 
