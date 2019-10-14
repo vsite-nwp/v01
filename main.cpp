@@ -43,7 +43,8 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
@@ -59,6 +60,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL); 
+
+	HWND buttonOne = CreateWindow(clsName, "one", WS_CHILD | WS_VISIBLE,
+		50, 50, CW_USEDEFAULT, CW_USEDEFAULT,
+		hwnd, NULL, hInstance, NULL);
 
 	MSG msg;
 	while(GetMessage(&msg, NULL, 0, 0))
