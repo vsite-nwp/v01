@@ -1,9 +1,12 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
+enum { id_button1 = 1, id_button2 = 2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+
+	CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 50, 50, 80, 20, hw, (HMENU) id_button1, NULL, NULL);
+	CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 50, 120, 80, 20, hw, (HMENU)id_button2, NULL, NULL);
+
 }
 
 void OnCommand(HWND hw, int id) {
@@ -44,6 +47,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	
 
 	return RegisterClass(&wc);
 }
