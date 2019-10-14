@@ -8,6 +8,10 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
+	if(id_button1)
+	MessageBox(hw,"One","Error", MB_OK);
+	else if(id_button2)
+	MessageBox(hw,"Two","Error", MB_OK);
 	// TODO: show message box with text depending on which button was pressed
 }
 
