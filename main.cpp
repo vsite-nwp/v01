@@ -2,15 +2,24 @@
 
 enum { id_button1 = 1, id_button2 };
 
-void OnCreate(HWND hw) {
+void OnCreate(HWND hw) 
+{
 	// TODO: create two child windows of type button
+	CreateWindow("BUTTON", "Button 1", WS_CHILD | WS_VISIBLE, 150, 100, 100, 50, hw, (HMENU)id_button1, 0, 0);
+	CreateWindow("BUTTON", "Button 2", WS_CHILD | WS_VISIBLE, 150, 200, 100, 50, hw, (HMENU)id_button2, 0, 0);
 }
 
-void OnCommand(HWND hw, int id) {
+void OnCommand(HWND hw, int id) 
+{
 	// TODO: show message box with text depending on which button was pressed
+	if (id == id_button1)
+		MessageBox(NULL, "First button", "First button message", MB_OK | MB_ICONEXCLAMATION);
+	if (id == id_button2)
+		MessageBox(NULL, "Second button", "Second button message", MB_OK | MB_ICONEXCLAMATION);
 }
 
-void OnDestroy() {
+void OnDestroy() 
+{
 	PostQuitMessage(0);
 }
 
@@ -43,7 +52,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = (HBRUSH) CreateSolidBrush(RGB(0,255,255)); // TODO: replace with cyan background
 
 	return RegisterClass(&wc);
 }
@@ -57,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 		return 0;
 
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+		CW_USEDEFAULT, CW_USEDEFAULT, 400, 400,
 		NULL, NULL, hInstance, NULL); 
 
 	MSG msg;
