@@ -1,13 +1,22 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
-
+enum { id_button1 = 1, id_button2 = 2};
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
-}
+	CreateWindow("button","One", WS_VISIBLE | WS_CHILD,
+		10, 10, 80, 25, hw, (HMENU)id_button1, NULL, NULL);
+	CreateWindow("button", "Two", WS_VISIBLE | WS_CHILD,
+	10, 50, 80, 25, hw, (HMENU)id_button2, NULL, NULL);
 
+}
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	switch (id) {
+	case id_button1:
+			MessageBox(hw,"Button 1 !",NULL, MB_OK);
+			break;
+	case id_button2:
+		MessageBox(hw, "Button 2 !", NULL, MB_OK);
+		break;
+	}
 }
 
 void OnDestroy() {
@@ -40,11 +49,11 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 	wc.lpfnWndProc = WndProc;
 	wc.hInstance = hInstance;
 	wc.lpszClassName = className;
-
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
-
+	COLORREF cl;
+	cl= RGB(0, 255, 255); 
+	wc.hbrBackground = (HBRUSH)CreateSolidBrush(cl);
 	return RegisterClass(&wc);
 }
 
