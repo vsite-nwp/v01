@@ -5,13 +5,15 @@ enum { id_button1 = 1, id_button2 };
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
 
-	HWND button1 = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 80, 24, hw, 0, 0, 0);
+	HWND button1 = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 80, 24, hw, 0, (HINSTANCE)id_button1, 0);
 
-	HWND button2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 150, 80, 24, hw, 0, 0, 0);
+	HWND button2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 150, 80, 24, hw, 0, (HINSTANCE)id_button2, 0);
 }
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
+
+	
 }
 
 void OnDestroy() {
