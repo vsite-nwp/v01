@@ -1,9 +1,5 @@
 #include <windows.h>
-#include <windowsx.h>
-#include <sstream>
-#include <tuple>
-#include <ctime>
-#include <random>
+
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw)
