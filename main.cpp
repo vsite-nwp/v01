@@ -1,18 +1,19 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
+enum { id_button1 = 1, id_button2  };
 
 void OnCreate(HWND hw) {
-	CreateWindowA("button", TEXT("One"), WS_VISIBLE | WS_CHILD, 50, 50, 50, 50, hw, NULL, NULL, NULL);
-	CreateWindowA("button", TEXT("Two"), WS_VISIBLE | WS_CHILD, 200, 50, 50, 50, hw, NULL, NULL, NULL);
+	CreateWindowA("button", TEXT("One"), WS_VISIBLE | WS_CHILD, 50, 50, 50, 50, hw, HMENU(id_button1), NULL, NULL);
+	CreateWindowA("button", TEXT("Two"), WS_VISIBLE | WS_CHILD, 200, 50, 50, 50, hw, HMENU(id_button2),NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
-	if(id_button1)
-	MessageBox(hw,"One","Error", MB_OK);
-	else if(id_button2)
-	MessageBox(hw,"Two","Error", MB_OK);
-	// TODO: show message box with text depending on which button was pressed
+
+	if (id_button1==id) 
+		MessageBox(hw, "One", "Error", MB_OK);
+	else if(id_button2==id)
+		MessageBox(hw, "Two", "Error", MB_OK);
+
 }
 
 void OnDestroy() {
