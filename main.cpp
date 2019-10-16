@@ -4,18 +4,18 @@ enum { id_button1 = 1, id_button2  };
 
 void OnCreate(HWND hw) {
 	
-	 CreateWindow("Button", "One", WS_CHILD|WS_VISIBLE, 10, 10, 100, 40, hw,HMENU(id_button1), NULL, NULL);
-	 CreateWindow("Button", "Two", WS_CHILD | WS_VISIBLE, 10, 200, 100, 40, hw, HMENU(id_button2) , NULL, NULL);
+	 CreateWindow("Button", "One", WS_CHILD|WS_VISIBLE, 100, 100, 100, 30, hw,HMENU(id_button1), NULL, NULL);
+	 CreateWindow("Button", "Two", WS_CHILD|WS_VISIBLE, 100, 200, 100, 30, hw, HMENU(id_button2) , NULL, NULL);
 
 }
 
 void OnCommand(HWND hw, int id) {
 	switch (id) {
 	case(id_button1):
-		MessageBox(hw, "One", "NWP", MB_ICONWARNING);
+		MessageBox(hw, "One", "NWP", MB_ICONEXCLAMATION|MB_OK);
 		break;
 	case(id_button2):
-		MessageBox(hw, "Two", "NWP", MB_ICONWARNING);
+		MessageBox(hw, "Two", "NWP", MB_ICONEXCLAMATION|MB_OK);
 		break;
 	}
 
