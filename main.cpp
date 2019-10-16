@@ -4,10 +4,27 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 	// TODO: create two child windows of type button
-}
+
+	HWND buttonOne = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE,
+		10, 10, 100, 20,
+		hw, (HMENU)id_button1, NULL, NULL);
+
+	HWND buttonTwo = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE,
+		10, 50, 100, 20,
+		hw, (HMENU)id_button2, NULL, NULL);
+} 
 
 void OnCommand(HWND hw, int id) {
 	// TODO: show message box with text depending on which button was pressed
+	switch (id)
+	{
+	case 1:
+		MessageBox(hw, "one", NULL, MB_ICONWARNING);
+		return;
+	case 2:
+		MessageBox(hw, "two", NULL, MB_ICONWARNING);
+		return;
+	}
 }
 
 void OnDestroy() {
@@ -61,9 +78,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, NULL, hInstance, NULL); 
 
-	HWND buttonOne = CreateWindow(clsName, "one", WS_CHILD | WS_VISIBLE,
-		50, 50, CW_USEDEFAULT, CW_USEDEFAULT,
-		hwnd, NULL, hInstance, NULL);
+	
 
 	MSG msg;
 	while(GetMessage(&msg, NULL, 0, 0))
