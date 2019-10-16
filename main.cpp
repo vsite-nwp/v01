@@ -11,10 +11,10 @@ void OnCommand(HWND hw, int id) {
 	switch (id)
 	{
 	case id_button1:
-		MessageBox(hw, "clicked on one", "one", MB_ICONEXCLAMATION);
+		MessageBox(hw, "clicked on one", "one", MB_ICONEXCLAMATION | MB_OK);
 		break;
 	case id_button2:
-		MessageBox(hw, "clicked on two", "two", MB_ICONEXCLAMATION);
+		MessageBox(hw, "clicked on two", "two", MB_ICONEXCLAMATION | MB_OK);
 		break;
 
 	default:
@@ -57,7 +57,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = CreateSolidBrush((COLORREF)RGB(0, 255, 255));
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
