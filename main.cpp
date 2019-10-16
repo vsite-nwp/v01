@@ -10,9 +10,9 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 
 	if (id_button1==id) 
-		MessageBox(hw, "One", "Error", MB_ICONEXCLAMATION);
+		MessageBox(hw, "One", "Error", MB_ICONEXCLAMATION|MB_OK);
 	else if(id_button2==id)
-		MessageBox(hw, "Two", "Error", MB_ICONEXCLAMATION);
+		MessageBox(hw, "Two", "Error", MB_ICONEXCLAMATION|MB_OK);
 
 }
 
