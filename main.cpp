@@ -1,6 +1,6 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2};
+enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
 
