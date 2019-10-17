@@ -3,7 +3,6 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
 
 	HWND buttonOne = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE,
 		10, 10, 100, 20,
@@ -15,14 +14,14 @@ void OnCreate(HWND hw) {
 } 
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+
 	switch (id)
 	{
-	case 1:
-		MessageBox(hw, "one", NULL, MB_ICONWARNING);
+	case id_button1:
+		MessageBox(hw, "one", NULL, MB_ICONWARNING );
 		return;
-	case 2:
-		MessageBox(hw, "two", NULL, MB_ICONWARNING);
+	case id_button2:
+		MessageBox(hw, "two", NULL, MB_ICONWARNING | MB_OK);
 		return;
 	}
 }
