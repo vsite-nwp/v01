@@ -18,7 +18,7 @@ void OnCommand(HWND hw, int id) {
 	switch (id)
 	{
 	case id_button1:
-		MessageBox(hw, "one", NULL, MB_ICONWARNING );
+		MessageBox(hw, "one", NULL, MB_ICONWARNING | MB_OK);
 		return;
 	case id_button2:
 		MessageBox(hw, "two", NULL, MB_ICONWARNING | MB_OK);
