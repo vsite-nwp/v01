@@ -11,10 +11,10 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 	switch (id) {
 	case id_button1:
-			MessageBox(hw,"Button 1 !",NULL, MB_OK);
+			MessageBox(hw,"Button 1 !",NULL, MB_OK | MB_ICONEXCLAMATION);
 			break;
 	case id_button2:
-		MessageBox(hw, "Button 2 !", NULL, MB_OK);
+		MessageBox(hw, "Button 2 !", NULL, MB_OK | MB_ICONEXCLAMATION);
 		break;
 	}
 }
@@ -51,9 +51,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 	wc.lpszClassName = className;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	COLORREF cl;
-	cl= RGB(0, 255, 255); 
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(cl);
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 	return RegisterClass(&wc);
 }
 
