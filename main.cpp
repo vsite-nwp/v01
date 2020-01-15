@@ -3,11 +3,21 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+	CreateWindow("BUTTON", "first", WS_CHILD | WS_VISIBLE, 200, 50, 150, 150, hw, (HMENU)id_button1, 0, 0);
+	CreateWindow("BUTTON", "second", WS_CHILD | WS_VISIBLE, 200, 250, 150, 150, hw, (HMENU)id_button2, 0, 0);
+
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	switch (id)
+	{
+	case id_button1:
+		MessageBox(hw, "text1", "NWP1", MB_OK | MB_ICONWARNING);
+		break;
+	case id_button2:
+		MessageBox(hw, "text2", "NWP2", MB_OK | MB_ICONWARNING);
+		break;
+	}
 }
 
 void OnDestroy() {
