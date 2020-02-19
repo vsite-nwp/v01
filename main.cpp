@@ -9,10 +9,10 @@ void OnCreate(HWND hw) {
 
 void OnCommand(HWND hw, int id) {
 	if (id == id_button1) {
-		MessageBox(hw, "OK", "OK", MB_OK);
+		MessageBox(hw, "OK", "OK", MB_OK| MB_ICONWARNING);
 	}
 	else if (id == id_button2) {
-		MessageBox(hw, "CANCEL", "CANCEL", MB_OK);
+		MessageBox(hw, "CANCEL", "CANCEL", MB_OK| MB_ICONWARNING);
 	}
 }
 
@@ -49,7 +49,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255));
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 	return RegisterClass(&wc);
 }
 
