@@ -4,11 +4,11 @@ enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {	
 	CreateWindow("BUTTON", "id_button1", WS_CHILD | WS_VISIBLE,
-		0, 0, 100, 25, hw, (HMENU)1, NULL, NULL);
+		0, 0, 100, 25, hw, (HMENU)id_button1, NULL, NULL);
 
 	CreateWindow("BUTTON", "id_button2", WS_CHILD | WS_VISIBLE,
 		0, 25, 100, 25,
-		hw, (HMENU)2, NULL, NULL);
+		hw, (HMENU)id_button2, NULL, NULL);
 
 }
 
