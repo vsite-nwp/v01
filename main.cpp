@@ -3,21 +3,21 @@
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {	
-	CreateWindow("BUTTON", "Dugmic", WS_CHILD | WS_VISIBLE,
-		CW_USEDEFAULT, 0, 100, 25, hw, (HMENU)1, NULL, NULL);
+	CreateWindow("BUTTON", "id_button1", WS_CHILD | WS_VISIBLE,
+		0, 0, 100, 25, hw, (HMENU)1, NULL, NULL);
 
-	CreateWindow("BUTTON", "Dugmic Drugi", WS_CHILD | WS_VISIBLE,
-		100, SW_SHOW, 100, 25,
+	CreateWindow("BUTTON", "id_button2", WS_CHILD | WS_VISIBLE,
+		0, 25, 100, 25,
 		hw, (HMENU)2, NULL, NULL);
 
 }
 
 void OnCommand(HWND hw, int id) {
 	if (id == id_button1)
-		MessageBox(hw, "klikno prvo dugmence", "Dinamo", 0x00000001L);
+		MessageBox(hw, "klikno prvo dugmence", "Dinamo", MB_ABORTRETRYIGNORE);
 
 	if (id == id_button2)
-		MessageBox(hw, "klikno drugo dugmence", "Zagreb", 0x00000004L);
+		MessageBox(hw, "klikno drugo dugmence", "Zagreb", MB_ABORTRETRYIGNORE);
 }
 
 void OnDestroy() {
@@ -53,7 +53,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255));
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
