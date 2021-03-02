@@ -2,12 +2,22 @@
 
 enum { id_button1 = 1, id_button2 };
 
-void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+void OnCreate(HWND hw) {	
+	CreateWindow("BUTTON", "Dugmic", WS_CHILD | WS_VISIBLE,
+		CW_USEDEFAULT, 0, 100, 25, hw, (HMENU)1, NULL, NULL);
+
+	CreateWindow("BUTTON", "Dugmic Drugi", WS_CHILD | WS_VISIBLE,
+		100, SW_SHOW, 100, 25,
+		hw, (HMENU)2, NULL, NULL);
+
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	if (id == id_button1)
+		MessageBox(hw, "klikno prvo dugmence", "Dinamo", 0x00000001L);
+
+	if (id == id_button2)
+		MessageBox(hw, "klikno drugo dugmence", "Zagreb", 0x00000004L);
 }
 
 void OnDestroy() {
@@ -43,7 +53,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 255, 255));
 
 	return RegisterClass(&wc);
 }
