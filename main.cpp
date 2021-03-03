@@ -1,15 +1,14 @@
 #include <windows.h>
 
+
 enum { id_button1 = 1, id_button2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
 	HWND button1 = CreateWindow("BUTTON", "one", WS_CHILD | WS_VISIBLE, 100, 100, 100, 50, hw, (HMENU)id_button1, NULL, NULL);
 	HWND button2 = CreateWindow("BUTTON", "two", WS_CHILD | WS_VISIBLE, 100, 155, 100, 50, hw, (HMENU)id_button2, NULL, NULL);
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
 	if (id == 1) {
 		int msgbox = MessageBox(hw, "one", "NWP", MB_ICONWARNING);
 	}
@@ -51,8 +50,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	//wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
-	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(122,122,255));
+	wc.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0,255,255));
 	return RegisterClass(&wc);
 }
 
