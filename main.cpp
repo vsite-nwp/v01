@@ -16,11 +16,11 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 
 	if (id == id_button1) {
-		MessageBox(hw, "one", "NWP", MB_ICONWARNING | MB_DEFBUTTON2);
+		MessageBox(hw, "one", "NWP", MB_ICONWARNING | MB_OK);
 		
 	}
 	else if (id == id_button2) {
-		MessageBox(hw, "two", "NWP", MB_ICONWARNING | MB_DEFBUTTON2);
+		MessageBox(hw, "two", "NWP", MB_ICONWARNING | MB_OK);
 	}
 }
 
