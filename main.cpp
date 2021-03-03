@@ -19,7 +19,7 @@ void OnCommand(HWND hw, int id) {
 void OnDestroy() {
 	PostQuitMessage(0);
 }
-
+ 
 LRESULT CALLBACK WndProc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
