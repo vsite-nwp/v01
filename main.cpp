@@ -9,7 +9,7 @@ void OnCreate(HWND hw) {
 }
 
 void OnCommand(HWND hw, int id) {
-	if (id == 1) {
+	if (id == id_button1) {
 		int msgbox = MessageBox(hw, "one", "NWP", MB_ICONWARNING);
 	}
 	else {
