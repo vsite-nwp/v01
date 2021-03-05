@@ -413,6 +413,9 @@ namespace UI {
 	};
 
 	// User interface objects which inherit from UIObject
+
+	//Grid contains rows and columns which can be defined as star length types or pixel length types
+	//Columns example 1*,250Px,1* with grid width of 400 px will result in 75px,250Px,75px grid
 	class Grid :public UIObject, public ParentUIObject {
 	public:
 		RowDefinitionCollection RowDefinitions;
@@ -480,8 +483,8 @@ namespace UI {
 			for (int i=0; i < stupciSirine.size(); ++i) {
 				passedRowsSum = 0;
 				for (int j=0; j < redoviVisine.size(); ++j) {
-					WindowPosition* pos = new WindowPosition(Position->x+passedColumnsSum,Position->y+passedRowsSum, stupciSirine[i], redoviVisine[i]);
-					passedRowsSum += redoviVisine[i];
+					WindowPosition* pos = new WindowPosition(Position->x+passedColumnsSum,Position->y+passedRowsSum, stupciSirine[i], redoviVisine[j]);
+					passedRowsSum += redoviVisine[j];
 					GridCells.insert(pair<tuple<int, int>, WindowPosition>(make_tuple(j, i), *pos));
 				}
 				passedColumnsSum += stupciSirine[i];
@@ -490,7 +493,7 @@ namespace UI {
 	};
 
 	class MainWindow :UIObject, ParentUIObject {
-
+		//not implemented
 	};
 
 	class Button :public UIObject {

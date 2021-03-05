@@ -30,7 +30,7 @@ void OnCreate(HWND hw) {
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
-	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
+	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(25, GridLengthType::Pixel)));
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));	
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
 	glavniGrid->RowDefinitions.Add(new RowDefinition(new GridLength(1, GridLengthType::Star)));
@@ -61,6 +61,7 @@ void OnCreate(HWND hw) {
 void OnCommand(HWND hw, int id) {
 	LPSTR lpstr = new char[25];
 	GetWindowTextA(hw, lpstr, 25);
+	//sender je button jer samo oni reagiraju na OnCommand tako da možemo direktni cast koristiti
 	Button* btn = dynamic_cast<Button*>(UIObject::getInstanceById(id));
 	UINT tip = id % 2 == 0 ? MB_OK | MB_ICONINFORMATION : MB_OKCANCEL | MB_ICONWARNING;
 	MessageBox(hw,(LPCSTR) btn->message.c_str(), lpstr,tip );
