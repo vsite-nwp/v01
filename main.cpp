@@ -9,6 +9,8 @@ void OnCreate(HWND hw) {
 
 
 
+
+
 }
 
 void OnCommand(HWND hw, int id) {
