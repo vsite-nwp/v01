@@ -2,67 +2,60 @@
 
 enum { id_button1 = 1, id_button2 };
 
-void OnCreate(HWND hw) {
+void on_create(HWND hw) 
+{
 	// TODO: create two child windows of type button
 }
 
-void OnCommand(HWND hw, int id) {
+void on_command(HWND hw, int id) 
+{
 	// TODO: show message box with text depending on which button was pressed
 }
 
-void OnDestroy() {
-	PostQuitMessage(0);
+void on_destroy() 
+{
+	::PostQuitMessage(0);
 }
 
-LRESULT CALLBACK WndProc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
+LRESULT CALLBACK window_proc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
 	{
 		case WM_CREATE:
-			OnCreate(hw);
+			on_create(hw);
 			return 0;
 		case WM_COMMAND:
-			OnCommand(hw, LOWORD(wp));
+			on_command(hw, LOWORD(wp));
 			return 0;
 		case WM_DESTROY:
-			OnDestroy();
+			on_destroy();
 			return 0;
 	}
-	return DefWindowProc(hw, msg, wp, lp);
+	return ::DefWindowProc(hw, msg, wp, lp);
 }
 
 
-int RegisterMyClass(HINSTANCE hInstance, char* className)
+int register_class(HINSTANCE hi, const char* name)
 {
-	WNDCLASS wc;
-	ZeroMemory(&wc, sizeof wc);
-
-	wc.lpfnWndProc = WndProc;
-	wc.hInstance = hInstance;
-	wc.lpszClassName = className;
-
+	WNDCLASS wc{};
+	wc.lpfnWndProc = window_proc;
+	wc.lpszClassName = name;
+	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
-
-	return RegisterClass(&wc);
+	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
+	wc.hbrBackground = static_cast<HBRUSH>(::GetStockObject(WHITE_BRUSH));  // TODO: replace with cyan background
+	return ::RegisterClass(&wc);
 }
 
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
+int WINAPI WinMain(HINSTANCE hi, HINSTANCE, LPSTR cmd_line, int show_flag)
 {
-	char clsName[] = "NWPClass";
-
-	if(!RegisterMyClass(hInstance, clsName))
+	const auto class_name = "NWPClass";
+	if (!register_class(hi, class_name))
 		return 0;
-
-	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-		NULL, NULL, hInstance, NULL); 
-
+	::CreateWindow(class_name, "NWP 1", WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 0, 0, hi, 0);
 	MSG msg;
-	while(GetMessage(&msg, NULL, 0, 0))
-		DispatchMessage(&msg);
-
+	while (::GetMessage(&msg, 0, 0, 0))
+		::DispatchMessage(&msg);
 	return msg.wParam;
 }
