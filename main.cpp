@@ -1,13 +1,36 @@
 #include <windows.h>
 
-enum { id_button1 = 1, id_button2 };
+enum { id_button1 = 1, id_button2 = 2 };
 
 void OnCreate(HWND hw) {
-	// TODO: create two child windows of type button
+	// ++TODO: create two child windows of type button
+
+	HWND btn_one = CreateWindow("BUTTON", "one", WS_VISIBLE | WS_CHILD, 50, 50, 75, 23, hw, (HMENU)id_button1,
+		(HINSTANCE)GetWindowLongPtr(hw, GWLP_HINSTANCE), NULL);
+
+	HWND btn_two = CreateWindow("BUTTON", "two", WS_VISIBLE | WS_CHILD, 50, 80, 75, 23, hw, (HMENU)id_button2,
+		(HINSTANCE)GetWindowLongPtr(hw, GWLP_HINSTANCE), NULL);
+
 }
 
 void OnCommand(HWND hw, int id) {
-	// TODO: show message box with text depending on which button was pressed
+	// ++TODO: show message box with text depending on which button was pressed
+
+	/*
+	if(id==1)
+		int msbox = MessageBox(hw, "one", "NWP", MB_ICONWARNING | MB_OK);
+	if(id==2)
+		int msbox = MessageBox(hw, "two", "NWP", MB_ICONWARNING | MB_OK);
+	*/
+	
+	switch (id) {
+	case 1:
+		MessageBox(hw, "one", "NWP", MB_ICONWARNING | MB_OK);
+		break;
+	case 2:
+		MessageBox(hw, "two", "NWP", MB_ICONWARNING | MB_OK);
+		break;
+	}
 }
 
 void OnDestroy() {
@@ -43,7 +66,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	//wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
+	//wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // ++TODO: replace with cyan background
 	CONST COLORREF rgbCyan = RGB(0, 255, 255);
 	wc.hbrBackground = CreateSolidBrush(rgbCyan); 
 	
@@ -61,7 +84,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 
 	HWND hwnd = CreateWindow(clsName, "NWP 1",  WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
-		NULL, NULL, hInstance, NULL); 
+		NULL, NULL, hInstance, NULL);
+
 
 	MSG msg;
 	while(GetMessage(&msg, NULL, 0, 0))
