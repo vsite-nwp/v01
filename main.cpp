@@ -45,7 +45,7 @@ int RegisterMyClass(HINSTANCE hInstance, char* className)
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	//wc.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); // TODO: replace with cyan background
 	CONST COLORREF rgbCyan = RGB(0, 255, 255);
-	wc.hbrBackground = CreateSolidBrush(rgbCyan);
+	wc.hbrBackground = CreateSolidBrush(rgbCyan); 
 	
 
 	return RegisterClass(&wc);
