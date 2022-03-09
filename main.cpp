@@ -4,7 +4,6 @@ enum { id_button1 = 1, id_button2 };
 
 void on_create(HWND hw) 
 {
-	// : create two child windows of type button
 	HWND button1 = CreateWindow("button", "click me",
 		WS_TABSTOP | WS_VISIBLE | WS_CHILD
 		| BS_DEFPUSHBUTTON, 10, 10, 100,50, hw, (HMENU)id_button1, 0, 0
@@ -19,10 +18,10 @@ void on_create(HWND hw)
 void on_command(HWND hw, int id) 
 {
 	if (id == 1) {
-		MessageBox(hw, "Stisnuli ste gumb 1!", "Gumb 1", MB_OKCANCEL);
+		MessageBox(hw, "Stisnuli ste gumb 1!", "Gumb 1", MB_OKCANCEL| MB_ICONWARNING);
 	}
 	else {
-		MessageBox(hw, "Stisnuli ste gumb 2!", "Gumb 2", MB_OKCANCEL);
+		MessageBox(hw, "Stisnuli ste gumb 2!", "Gumb 2", MB_OKCANCEL|MB_ICONWARNING);
 	}
 }
 
@@ -58,7 +57,7 @@ int register_class(HINSTANCE hi, const char* name)
 	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = static_cast<HBRUSH>(CreateSolidBrush(RGB(0,255,255)));  // TODO: replace with cyan background
+	wc.hbrBackground = (CreateSolidBrush(RGB(0,255,255))); 
 	return ::RegisterClass(&wc);
 }
 
