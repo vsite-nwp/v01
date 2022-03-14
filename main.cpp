@@ -5,8 +5,8 @@ enum { id_button1 = 1, id_button2 };
 void on_create(HWND hw)
 {
 	// TODO: create two child windows of type button
-	::CreateWindow("BUTTON", "One", WS_CHILD | WS_VISIBLE, 20, 20, 60, 20, hw, (HMENU)id_button1, 0, 0);
-	::CreateWindow("BUTTON", "Two", WS_CHILD | WS_VISIBLE, 60, 60, 60, 20, hw, (HMENU)id_button2, 0, 0);
+	::CreateWindow("BUTTON", "One", WS_CHILD | WS_VISIBLE, 20, 20, 40, 20, hw, (HMENU)id_button1, 0, 0);
+	::CreateWindow("BUTTON", "Two", WS_CHILD | WS_VISIBLE, 20, 60, 40, 20, hw, (HMENU)id_button2, 0, 0);
 }
 
 void on_command(HWND hw, int id) 
@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hi, HINSTANCE, LPSTR cmd_line, int show_flag)
 	if (!register_class(hi, class_name))
 		return 0;
 	::CreateWindow(class_name, "NWP 1", WS_OVERLAPPEDWINDOW | WS_VISIBLE,
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 0, 0, hi, 0);
+		CW_USEDEFAULT, CW_USEDEFAULT, 250, 150, 0, 0, hi, 0);
 	MSG msg;
 	while (::GetMessage(&msg, 0, 0, 0))
 		::DispatchMessage(&msg);
