@@ -1,0 +1,4 @@
+﻿>------ Build started: Project: v6b, Configuration: Debug|Win32 ------
+  v6b.vcxproj -> C:\Users\Miki\Source\Repos\v06b\Debug\v6b.exe
+
+Build succeeded.
