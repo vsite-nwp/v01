@@ -12,7 +12,7 @@ void on_create(HWND hw)
 
 void on_command(HWND hw, int id) 
 {
-	const auto message = id == 1 ? "prvi gumbek" : "drugi gumbek";
+	const auto message = id == id_button1 ? "prvi gumbek" : "drugi gumbek";
 	::MessageBox(hw, message, "Pozor majstore", MB_ICONWARNING);
 }
 
