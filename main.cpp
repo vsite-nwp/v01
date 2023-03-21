@@ -2,17 +2,21 @@
 
 enum { id_button1 = 1, id_button2 };
 
-void on_create(HWND hw) 
+void on_create(HWND hw)
 {
 	// TODO: create two child windows of type button
+
+	HWND btn1 = CreateWindow("button", "one", WS_VISIBLE | WS_CHILD, 100, 100, 100, 50, hw, (HMENU)id_button1, NULL, NULL);
+	HWND btn2 = CreateWindow("button", "two", WS_VISIBLE | WS_CHILD, 100, 160, 100, 50, hw, (HMENU)id_button2, NULL, NULL);
 }
 
-void on_command(HWND hw, int id) 
+void on_command(HWND hw, int id)
 {
-	// TODO: show message box with text depending on which button was pressed
+	if (id == id_button1) { MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING); }
+	else if (id = id_button2) { MessageBox(hw, "two", "NWP", MB_OK | MB_ICONWARNING); }
 }
 
-void on_destroy() 
+void on_destroy()
 {
 	::PostQuitMessage(0);
 }
@@ -21,15 +25,15 @@ LRESULT CALLBACK window_proc(HWND hw, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
 	{
-		case WM_CREATE:
-			on_create(hw);
-			return 0;
-		case WM_COMMAND:
-			on_command(hw, LOWORD(wp));
-			return 0;
-		case WM_DESTROY:
-			on_destroy();
-			return 0;
+	case WM_CREATE:
+		on_create(hw);
+		return 0;
+	case WM_COMMAND:
+		on_command(hw, LOWORD(wp));
+		return 0;
+	case WM_DESTROY:
+		on_destroy();
+		return 0;
 	}
 	return ::DefWindowProc(hw, msg, wp, lp);
 }
@@ -43,7 +47,7 @@ int register_class(HINSTANCE hi, const char* name)
 	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = static_cast<HBRUSH>(::GetStockObject(WHITE_BRUSH));  // TODO: replace with cyan background
+	wc.hbrBackground = static_cast<HBRUSH>(CreateSolidBrush(RGB(0, 255, 255)));
 	return ::RegisterClass(&wc);
 }
 
