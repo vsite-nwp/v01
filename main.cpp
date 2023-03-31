@@ -12,8 +12,17 @@ void on_create(HWND hw)
 
 void on_command(HWND hw, int id)
 {
-	if (id == id_button1) { MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING); }
-	else if (id = id_button2) { MessageBox(hw, "two", "NWP", MB_OK | MB_ICONWARNING); }
+	switch (id)
+	{
+	case id_button1:
+		MessageBox(hw, "one", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+	case id_button2:
+		MessageBox(hw, "two", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+	default:
+		break;
+	}
 }
 
 void on_destroy()
@@ -47,7 +56,7 @@ int register_class(HINSTANCE hi, const char* name)
 	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = static_cast<HBRUSH>(CreateSolidBrush(RGB(0, 255, 255)));
+	wc.hbrBackground = CreateSolidBrush(RGB(0, 255, 255));
 	return ::RegisterClass(&wc);
 }
 
