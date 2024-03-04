@@ -1,15 +1,42 @@
 #include <windows.h>
 
+
 enum { id_button1 = 1, id_button2 };
 
 void on_create(HWND hw) 
 {
 	// TODO: create two child windows of type button
+	CreateWindow("BUTTON", "One", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+		50, 50, 100, 30, hw, (HMENU)id_button1, NULL, NULL);
+
+	CreateWindow("BUTTON", "Two", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+		50, 100, 100, 30, hw, (HMENU)id_button2, NULL, NULL);
 }
 
 void on_command(HWND hw, int id) 
 {
 	// TODO: show message box with text depending on which button was pressed
+	LPCTSTR lpText = nullptr;
+	LPCTSTR lpCaption = nullptr;
+
+	switch (id)
+	{
+	case id_button1:
+		lpText = "Pritisnut gumb One!";
+		lpCaption = "Button One";
+		break;
+	case id_button2:
+		lpText = "Pritisnut gumb Two!";
+		lpCaption = "Button Two";
+		break;
+	default:
+		break;
+	}
+
+	if (lpText && lpCaption)
+	{
+		MessageBox(hw, lpText, lpCaption, MB_ICONWARNING);
+	}
 }
 
 void on_destroy() 
@@ -43,7 +70,8 @@ int register_class(HINSTANCE hi, const char* name)
 	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = static_cast<HBRUSH>(::GetStockObject(WHITE_BRUSH));  // TODO: replace with cyan background
+	HBRUSH hBrush = CreateSolidBrush(RGB(0, 255, 255));
+	wc.hbrBackground = hBrush;
 	return ::RegisterClass(&wc);
 }
 
