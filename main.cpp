@@ -17,12 +17,14 @@ void on_command(HWND hw, int id)
 	switch (id)
 	{
 		case id_button1:
-			::MessageBox(hw, "Button1", "Button1", MB_OK);
+			::MessageBox(hw, "Button1", "Button1", MB_ICONWARNING);
+			
 			break;
 		case id_button2:
-			::MessageBox(hw, "Button2", "Button2", MB_OK);
+			::MessageBox(hw, "Button2", "Button2", MB_ICONWARNING);
 			break;
 	}
+	
 }
 
 void on_destroy() 
