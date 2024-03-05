@@ -4,12 +4,26 @@ enum { id_button1 = 1, id_button2 };
 
 void on_create(HWND hw) 
 {
-	// TODO: create two child windows of type button
+	// : create two child windows of type button
+	CreateWindow("BUTTON", "ONE", WS_TABSTOP | WS_VISIBLE | WS_CHILD , 250, 250, 100, 50,hw,(HMENU)id_button1,NULL, NULL);
+	CreateWindow("BUTTON", "TWO", WS_TABSTOP | WS_VISIBLE | WS_CHILD, 300, 300, 100, 50, hw, (HMENU)id_button2, NULL,  NULL);
+
+
 }
 
 void on_command(HWND hw, int id) 
 {
 	// TODO: show message box with text depending on which button was pressed
+	switch (id) {
+	case id_button1:
+		MessageBox(hw, "ONE", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+	case id_button2:
+		MessageBox(hw, "TWO", "NWP", MB_OK | MB_ICONWARNING);
+		break;
+			
+	}
+
 }
 
 void on_destroy() 
@@ -43,7 +57,7 @@ int register_class(HINSTANCE hi, const char* name)
 	wc.hInstance = hi;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = static_cast<HBRUSH>(::GetStockObject(WHITE_BRUSH));  // TODO: replace with cyan background
+	wc.hbrBackground = static_cast<HBRUSH>(CreateSolidBrush(RGB(0,255,255)));  // : replace with cyan background
 	return ::RegisterClass(&wc);
 }
 
