@@ -4,10 +4,9 @@ enum { id_button1 = 1, id_button2 };
 
 void on_create(HWND hw) 
 {
-	// TODO: create two child windows of type button
 	HWND hWndButton1 = CreateWindow(
 		"BUTTON",          
-		"button1",         
+		"id_button1",         
 		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 
 		10,                
 		10,                
@@ -21,7 +20,7 @@ void on_create(HWND hw)
 
 	HWND hWndButton2 = CreateWindow(
 		"BUTTON",          
-		"button2",         
+		"id_button2",         
 		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 
 		200, 
 		10,
@@ -36,7 +35,6 @@ void on_create(HWND hw)
 
 void on_command(HWND hw, int id) 
 {
-	// TODO: show message box with text depending on which button was pressed
 	switch (id)
 	{
 	case id_button1:
